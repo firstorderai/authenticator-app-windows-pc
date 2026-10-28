@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -163,18 +163,20 @@
           <!-- Download Heading -->
           <div>
             <h3 class="text-3xl font-bold text-gray-900">
-              Latest Stable Download – 3.0.4
+              Latest Stable Download – <span data-app-version></span>
             </h3>
           </div>
 
           <!-- Download Description -->
           <div class="flex flex-col items-start space-y-4">
             <a
-              href="https://s3.us-east-1.amazonaws.com/firstorder.public/app/authenticator_setup.exe"
+              href="https://static.firstorder.ai/app/authenticator_setup.exe"
               class="inline-block text-center w-80 py-4 text-xl font-medium text-white bg-blue-600 rounded-xl hover:bg-blue-500 transition-colors duration-200 shadow-xl hover:shadow-2xl"
-              title="Download Authenticator App v3.0.4 for Windows"
+              data-app-download
+              title="Download Authenticator App for Windows"
             >
-              Download setup.exe<br />v3.0.4 (latest stable version)
+              Download setup.exe<br />v<span data-app-version></span> (latest
+              stable version)
             </a>
             <p class="text-base text-gray-600">
               Get the latest stable version of Authenticator App
@@ -184,7 +186,7 @@
           <!-- New Features -->
           <div>
             <h4 class="text-xl font-bold text-gray-900">
-              New Features in 3.0.4
+              New Features in <span data-app-version></span>
             </h4>
           </div>
 
@@ -395,6 +397,15 @@
 
     <!-- JavaScript -->
     <script>
+      // Update this value when publishing a new app release.
+      const APP_VERSION = '3.2.0';
+
+      document.querySelectorAll('[data-app-version]').forEach((element) => {
+        element.textContent = APP_VERSION;
+      });
+      document.querySelector('[data-app-download]').title =
+        `Download Authenticator App v${APP_VERSION} for Windows`;
+
       // Smooth scrolling for navigation links
       document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
         anchor.addEventListener('click', function (e) {
